@@ -51,7 +51,7 @@ public class Calculator {
 
 	/**
 	 * the method returns the result of computation.
-	 * @return result.
+	 * @return result
 	*/
 	public double getResult() {
 		return this.result;

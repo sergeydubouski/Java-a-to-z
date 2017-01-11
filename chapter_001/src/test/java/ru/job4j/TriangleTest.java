@@ -15,9 +15,9 @@ import static org.hamcrest.number.IsCloseTo.closeTo;
 public class TriangleTest {
 
     /**
-     * the variable contains exepted variation between expected and actual results.
+     * the variable contains accepted variation between expected and actual results.
      */
-	public static final double EXEPTED_ERROR = 0.01d;
+	public static final double ACCEPTED_ERROR = 0.01d;
 
     /**
      * Test area's calculation with a valid input.
@@ -39,7 +39,7 @@ public class TriangleTest {
 		Triangle triangle = new Triangle(a, b, c);
 		final double actualResult = triangle.area();
 
-		assertThat(actualResult, is(closeTo(expectedResult, EXEPTED_ERROR)));
+		assertThat(actualResult, is(closeTo(expectedResult, ACCEPTED_ERROR)));
 	}
 
 	 /**
@@ -62,6 +62,6 @@ public class TriangleTest {
 		Triangle triangle = new Triangle(a, b, c);
 		final double actualResult = triangle.area();
 
-		assertThat(actualResult, is(closeTo(expectedResult, EXEPTED_ERROR)));
+		assertThat(actualResult, is(closeTo(expectedResult, ACCEPTED_ERROR)));
 	}
 }

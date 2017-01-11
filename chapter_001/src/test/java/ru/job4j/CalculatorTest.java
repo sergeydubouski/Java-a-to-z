@@ -39,7 +39,7 @@ public class CalculatorTest {
 		final double expectedResult = 2d;
 		calc.subtract(first, second);
 		final double actualResult = calc.getResult();
-		
+
 		assertThat(expectedResult, is(actualResult));
 	}
 

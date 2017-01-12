@@ -9,8 +9,7 @@ package ru.job4j;
 public class Point {
 
 	/**
-	 * the variable contains x-.
-	 coordinates of a point.
+	 * the variable contains x-coordinates of a point.
 	*/
 	private double x;
 

@@ -15,6 +15,6 @@ public class Max {
 	 * @return - return maximum value.
 	*/
 	public int max(int first, int second) {
-		return (first != second) ? Math.max(first, second) : 0;
+		return (first > second) ? first : second;
 	}
 }

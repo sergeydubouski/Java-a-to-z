@@ -45,8 +45,7 @@ public class Triangle {
 	double ca = this.c.distanceTo(this.a);
 		if ((ab * bc * ca) != 0) {
 			double perimeter = (ab + bc + ca) / 2;
-			double s = Math.sqrt(perimeter * (perimeter - ab) * (perimeter - bc) * (perimeter - ca));
-			return s;
+			return Math.sqrt(perimeter * (perimeter - ab) * (perimeter - bc) * (perimeter - ca));
 		} else {
 			return 0;
 			}

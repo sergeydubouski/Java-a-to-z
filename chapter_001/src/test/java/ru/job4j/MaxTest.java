@@ -17,7 +17,7 @@ public class MaxTest {
 	 * test max value.
 	*/
 	@Test
-	public void whenTwoValuesThenMaxReturned() {
+	public void whenSecondValueMaxThenMaxReturned() {
 
 		final int first = 10;
 		final int second = 12;
@@ -30,14 +30,14 @@ public class MaxTest {
 	}
 
 	/**
-	 * test equal values.
+	 * test max value.
 	*/
 	@Test
-	public void whenTwoValuesEqualThenZeroReturned() {
+	public void whenFirstValueMaxThenMaxReturned() {
 
-		final int first = 12;
-		final int second = 12;
-		final int expectedResult = 0;
+		final int first = 11;
+		final int second = 10;
+		final int expectedResult = 11;
 
 		final Max m = new Max();
 		final int actualResult = m.max(first, second);

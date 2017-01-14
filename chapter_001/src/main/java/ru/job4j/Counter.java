@@ -9,9 +9,9 @@ package ru.job4j;
 public class Counter {
 
 	/**
-	 * the method calculates a sum of even numbers within a given range.
-	 * @param start - first number of the range.
-	 * @param finish - last number of the range.
+	 * the method calculates the sum of even numbers within a given range.
+	 * @param start - beginning of the range.
+	 * @param finish - end of the range.
 	 * @return - return the sum of even numbers within the range.
 	*/
 	public int add(int start, int finish) {

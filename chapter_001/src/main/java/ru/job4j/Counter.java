@@ -4,7 +4,7 @@ package ru.job4j;
  * Counter class.
  * @author Sergey Dubouski
  * @version 1.0
- * @since 12.01.2017
+ * @since 14.01.2017
 */
 public class Counter {
 

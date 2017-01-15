@@ -9,37 +9,35 @@ package ru.job4j;
 public class Paint {
 
 	/**
-	 * the method draws a pyramid.
-	 * @param h - the pyramid's height.
+	 * the method draws a piramid.
+	 * @param h - the piramid's height.
+	 * @return - piramid string.
 	*/
-	public void paint(int h) {
+	public String piramid(int h) {
 
-		StringBuilder stringPyramid = new StringBuilder();
+		StringBuilder stringPiramid = new StringBuilder();
 
-		//to create the pick of a triangle
-		for (int i = 0; i < h; i++ ) {
-			stringPyramid.append(" ");
+		//create the pick of a triangle
+		for (int i = 0; i < h; i++) {
+			stringPiramid.append(" ");
 		}
-		stringPyramid.append(String.format("^%s",System.getProperty("line.separator")));
+		stringPiramid.append(String.format("^%s", System.getProperty("line.separator")));
 
-		//to create the left and right side of a triangle
-		for (int i = h; i < h * 2; i++) {
+		//create left and right sides of a triangle
+		for (int i = h; i < h * 2 - 1; i++) {
 			int k = 0;
-			for ( int j = 0; j < h * 2 - i - 1; j++) {
+			for (int j = 0; j < h * 2 - i - 1; j++) {
 				k++;
-				stringPyramid.append(" ");
+				stringPiramid.append(" ");
 			}
-			stringPyramid.append("^");
+			stringPiramid.append("^");
 
 			for (int j = 0; j < i - k; j++) {
-				stringPyramid.append(" ");
+				stringPiramid.append(" ");
 			}
-			stringPyramid.append(String.format("^%s",System.getProperty("line.separator")));
+			stringPiramid.append(String.format("^%s", System.getProperty("line.separator")));
 		}
 
-		System.out.println(stringPyramid.toString());
+		return (h > 0) ? stringPiramid.toString() : "Cannot create a piramid with the given height!";
 	}
 }
-
-
-

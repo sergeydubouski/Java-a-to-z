@@ -26,7 +26,6 @@ public class Max {
 	 * @return - return maximum value.
 	*/
 	public int max(int first, int second, int third) {
-		final int value = this.max(first, second);
-		return (value > third) ? value : third;
+		return max(max(first, second), third);
 	}
 }

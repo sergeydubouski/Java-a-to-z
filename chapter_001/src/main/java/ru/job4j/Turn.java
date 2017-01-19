@@ -7,21 +7,21 @@ package ru.job4j;
  * @since 19.01.2017
 */
 public class Turn {
-	
-	int [] arrayTurn;
-	
-	public Turn (int first, second, third, fourth, fifth) {
-		
-		arrayTurn = new int [] {first, second, third, fourth, fifth};
-	}
-	
-	public void back () {
-		
-		for (int i = 0; i < arrayTurn.length; i ++) {
-			
-			int tempStorage = this.arrayTurn[i];
-			this.arrayTurn[i] = this.arrayTurn[arrayTurn.length - i - 1];
-			this.arrayTurn[arrayTurn.length - i - 1]  = tempStorage;			
+
+	/**
+	 * the method swaps the integer array.
+	 * @param arrayIn - array arrayIn.
+	 * @return - return arrayIn.
+	*/
+	public int[] back(int[] arrayIn) {
+
+		for (int i = 0; i < arrayIn.length / 2; i++) {
+			int tempStorage = 0;
+			tempStorage = arrayIn[i];
+			arrayIn[i] = arrayIn[arrayIn.length - i - 1];
+			arrayIn[arrayIn.length - i - 1]  = tempStorage;
 		}
+
+		return arrayIn;
 	}
 }

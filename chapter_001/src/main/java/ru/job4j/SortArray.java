@@ -9,7 +9,7 @@ package ru.job4j;
 class SortArray {
 
 	/**
-	 * the method sorts an one-dimensional array in ascending order.
+	 * the method sorts a one-dimensional array in an ascending order.
 	 * @param arrayIn - one-dimensional array arrayIn.
 	 * @return - sorted arrayIn.
 	*/

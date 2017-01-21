@@ -15,11 +15,7 @@ class FlipArray {
 	*/
 	public int[][] flip(int[][] arrayIn) {
 
-<<<<<<< HEAD
-		int[][] arrayOut = new int[arrayIn.length][arrayIn.length];
-=======
 		int[][] arrayOut = arrayIn;
->>>>>>> dev
 
 		for (int i = 0; i < arrayOut.length; i++) {
 			for (int j = 0; j < arrayOut.length; j++) {

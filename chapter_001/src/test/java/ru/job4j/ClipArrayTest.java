@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
  * @version $id$.
  * @since 20.01.2017.
 */
-class ClipArrayTest {
+public class ClipArrayTest {
 
 	/**
 	 * Test.

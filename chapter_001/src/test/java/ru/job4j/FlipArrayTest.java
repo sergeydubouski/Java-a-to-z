@@ -14,8 +14,6 @@ import static org.junit.Assert.assertThat;
 
 public class FlipArrayTest {
 
-public cass FlipArrayTest {
-
 	/**
 	 * Test.
 	*/

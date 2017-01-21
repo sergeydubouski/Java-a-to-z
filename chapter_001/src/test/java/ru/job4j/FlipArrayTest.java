@@ -11,11 +11,10 @@ import static org.junit.Assert.assertThat;
  * @version $id$.
  * @since 20.01.2017.
 */
-<<<<<<< HEAD
+
 public class FlipArrayTest {
-=======
+
 public cass FlipArrayTest {
->>>>>>> dev
 
 	/**
 	 * Test.
@@ -23,7 +22,6 @@ public cass FlipArrayTest {
 	@Test
 	public void whenArrayThenNinetyDegreeRotate() {
 
-<<<<<<< HEAD
 		final int first = 0;
 		final int second = 1;
 		final int third = 2;

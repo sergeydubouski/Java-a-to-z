@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
  * @version $id$.
  * @since 20.01.2017.
 */
-public cass FlipArrayTest {
+public class FlipArrayTest {
 
 	/**
 	 * Test.
@@ -19,10 +19,20 @@ public cass FlipArrayTest {
 	@Test
 	public void whenArrayThenNinetyDegreeRotate() {
 
-		int[][] expectedResult = new int[][] {{20, 10, 0},{21, 11, 1},{22, 12, 2}};
+		final int first = 0;
+		final int second = 1;
+		final int third = 2;
+		final int fourth = 10;
+		final int fifth = 11;
+		final int sixth = 12;
+		final int seven = 20;
+		final int eight = 21;
+		final int nine = 22;
 
-		FlipArray fa = new FlipArray();
-		fa.flip(new int[][] {{0, 1, 2},{10, 11, 12},{20, 21, 22}});
+		final int[][] expectedResult = new int[][] {{seven, fourth, first}, {eight, fifth, second}, {nine, sixth, third}};
+
+		final FlipArray fa = new FlipArray();
+		final int[][] actualResult = fa.flip(new int[][] {{first, second, third}, {fourth, fifth, sixth}, {seven, eight, nine}});
 		assertThat(actualResult, is(expectedResult));
 	}
 }

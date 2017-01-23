@@ -18,9 +18,7 @@ class ClipArray {
 	public String[] clip(String[] arrayIn) {
 
 		int count = 0;
-		//boolean flag = true;
 
-		//sort out the array
 		for (int i = 0; i < arrayIn.length - count; i++) {
 
 			for (int j = i + 1; j < arrayIn.length - count; j++) {

@@ -21,7 +21,7 @@ class ClipArray {
 		//boolean flag = true;
 
 		//sort out the array
-		for (int i = 0; i < arrayIn.length - count - 1; i++) {
+		for (int i = 0; i < arrayIn.length - count; i++) {
 
 			for (int j = i + 1; j < arrayIn.length - count; j++) {
 
@@ -29,7 +29,7 @@ class ClipArray {
 
 					count += 1;
 
-					for (int k = j; k < arrayIn.length - 1; k++) {
+					for (int k = j; k < arrayIn.length - count; k++) {
 						arrayIn[k] = arrayIn[k + 1];
 					}
 
@@ -38,7 +38,7 @@ class ClipArray {
 			}
 		}
 
-		String[] arrayOut = Arrays.copyOf(arrayIn, arrayOutLength);
+		String[] arrayOut = Arrays.copyOf(arrayIn, arrayIn.length - count);
 		return arrayOut;
 	}
 }

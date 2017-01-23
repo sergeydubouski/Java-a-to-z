@@ -26,7 +26,7 @@ public class ClipArrayTest {
 
 		assertThat(actualResult, is(expectedResult));
 	}
-	
+
 	/**
 	 * Test.
 	*/
@@ -40,7 +40,7 @@ public class ClipArrayTest {
 
 		assertThat(actualResult, is(expectedResult));
 	}
-	
+
 	/**
 	 * Test.
 	*/

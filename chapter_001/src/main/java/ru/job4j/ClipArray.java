@@ -17,34 +17,27 @@ class ClipArray {
 	*/
 	public String[] clip(String[] arrayIn) {
 
-		int arrayOutLength = 0;
-		boolean flag = true;
+		int count = 0;
+		//boolean flag = true;
 
 		//sort out the array
-		for (int i = 0; i < arrayIn.length - 1; i++) {
+		for (int i = 0; i < arrayIn.length - count - 1; i++) {
 
-			for (int j = i + 1; j < arrayIn.length; j++) {
+			for (int j = i + 1; j < arrayIn.length - count; j++) {
 
 				if (arrayIn[i] == arrayIn[j]) {
+
+					count += 1;
 
 					for (int k = j; k < arrayIn.length - 1; k++) {
 						arrayIn[k] = arrayIn[k + 1];
 					}
+
+					j -= 1;
 				}
 			}
 		}
 
-		//clip the array
-		for (int i = 0; i < arrayIn.length - 1; i++) {
-
-			for (int j = i + 1; j < arrayIn.length; j++) {
-
-				if (arrayIn[i] == arrayIn[j] && flag) {
-					arrayOutLength = j;
-					flag = false;
-				}
-			}
-		}
 		String[] arrayOut = Arrays.copyOf(arrayIn, arrayOutLength);
 		return arrayOut;
 	}

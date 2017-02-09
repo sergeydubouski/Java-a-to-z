@@ -5,7 +5,7 @@ package ru.job4j;
  * @author Sergey Dubouski.
  * @version 1.0.
  * @since 05.02.2017.
-*/
+ */
 class SortTwoSortedArrays {
 
 	/**
@@ -13,7 +13,7 @@ class SortTwoSortedArrays {
 	 * @param arrFirst - first sorted array.
 	 * @param arrSecond - second sorted array.
 	 * @return - return combined sorted array.
-	*/
+	 */
 	public int[] sort(int[] arrFirst, int[] arrSecond) {
 
 		final int[] arrCombined = new int[arrFirst.length + arrSecond.length];
@@ -29,16 +29,16 @@ class SortTwoSortedArrays {
 					countArrSecond++;
 					count++;
 				} else if (arrFirst[i] < arrSecond[j]) {
-						arrCombined[count] = arrFirst[i];
-						count++;
-						countArrFirst++;
-						break;
-					} else {
-							arrCombined[count] = arrSecond[j];
-							count++;
-							countArrFirst++;
-							break;
-						}
+					arrCombined[count] = arrFirst[i];
+					count++;
+					countArrFirst++;
+					break;
+				} else {
+					arrCombined[count] = arrSecond[j];
+					count++;
+					countArrFirst++;
+					break;
+				}
 			}
 		}
 
@@ -55,7 +55,7 @@ class SortTwoSortedArrays {
 				arrCombined[count + m] = arrSecond[i];
 				m++;
 			}
-		  }
+		}
 		return arrCombined;
 	}
 }

@@ -41,15 +41,7 @@ public class Tracker
 */
 	public void delete(Item item)
 	{
-		for(Item element : items)
-		{
-			int count = 0;
-			if(element == item)
-			{
-				
-			}
-		}
-		numberOfItems--;
+		
 	}
 /**
  * the method finds all items in the array of items.
@@ -77,24 +69,4 @@ public class Tracker
 	{
 		return foundItems;
 	}
-/**
- * the method shifts an array to the left.
- * @param startIndex - index of an array from which sorting starts.
- * @return - return a sortedArray.
-*/
-	private Items[] sortArray(int startIndex)
-	{
-		for(int i = 0; i < items.length; i++)
-		{
-			if(items[i] == null)
-			{
-				for(int j = i; j < items.length - 1; j++)
-				{
-					items[j] = items[j + 1];
-					items[j + 1] = null;
-				}
-			}
-		}
-		return items;
-	}	
 }

@@ -11,6 +11,9 @@ class Item
 	private String name;
 	private String description;
 	
+	{
+		this.id = System.currentTimeMillis();
+	}	
 	Item()
 	{
 		super();
@@ -27,15 +30,11 @@ class Item
 	{
 		return this.description;
 	}
-	void setId()
-	{
-		this.id = System.currentTimeMillis();
-	}
 	String setName(String name)
 	{
 		this.name = name;
 	}
-	String getDescription(String description)
+	String setDescription(String description)
 	{
 		this.description = description;
 	}

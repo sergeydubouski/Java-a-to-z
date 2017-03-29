@@ -1,4 +1,5 @@
 package ru.job4j.tracker.models;
+
 /**
  * class Tracker.
  * @author Sergey Dubouski.
@@ -23,17 +24,25 @@ public class Tracker
 */
 	public Item add(Item item)
 	{
-		items[numberOfItems++] = item;		
+		items[numberOfItems++] = item;			
 		return item;
 	}
 /**
- * the method update an item from the array of items.
- * @param item - item to update.
- * @return - return the updated item.
+ * the method overwrite an item from the array of items.
+ * @param item - item to write.
+ * @return - return the item.
 */
 	public void update(Item item)
 	{
-		
+		int count = -1;
+		for(Item element : items)
+		{
+			count++;
+			if(element.getId().equals(item.getId()))
+			{
+				items[count] = item;
+			}
+		}
 	}
 /**
  * the method delete an item from the array of items.
@@ -41,7 +50,25 @@ public class Tracker
 */
 	public void delete(Item item)
 	{
-		
+		int count = 0;
+		for(Item element : this.items)
+		{
+			count++;
+			if(element != null && element.getId().equals(item.getId()))
+			{
+				if(count != this.items.length)
+				{
+					System.arraycopy(this.items, count, this.items, count - 1, this.items.length - count);
+					this.items[this.items.length - 1] = null;
+					this.numberOfItems--;
+				}
+				else
+				{
+					this.items[count - 1] = null;
+					this.numberOfItems--;				
+				}
+			}
+		}
 	}
 /**
  * the method finds all items in the array of items.

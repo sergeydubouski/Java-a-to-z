@@ -24,7 +24,7 @@ public class Tracker
 */
 	public Item add(Item item)
 	{
-		this.items[this.addedItems++] = item;			
+		this.items[this.addedItems++] = item;		
 		return item;
 	}
 /**
@@ -34,10 +34,10 @@ public class Tracker
 	public void update(Item item)
 	{
 		int count = -1;
-		
-		for(int i = 0; i != this.addedItems; i++)
+
+		for (int i = 0; i != this.addedItems; i++)
 		{
-			if(this.items[i].getId().equals(item.getId()))
+			if (this.items[i].getId().equals(item.getId()))
 			{
 				this.items[i] = item;
 			}
@@ -50,12 +50,12 @@ public class Tracker
 	public void delete(Item item)
 	{
 		int count = 0;
-		for(Item element : this.items)
+		for (Item element : this.items)
 		{
 			count++;
-			if(element != null && element.getId().equals(item.getId()))
+			if (element != null && element.getId().equals(item.getId()))
 			{
-				if(count != this.items.length)
+				if (count != this.items.length)
 				{
 					System.arraycopy(this.items, count, this.items, count - 1, this.items.length - count);
 					this.items[this.items.length - 1] = null;
@@ -64,7 +64,7 @@ public class Tracker
 				else
 				{
 					this.items[count - 1] = null;
-					this.addedItems--;				
+					this.addedItems--;
 				}
 			}
 		}
@@ -89,17 +89,17 @@ public class Tracker
 		int numOfFoundItems = 0;
 		Item[] foundItems = new Item[this.addedItems];
 		Item[] result = new Item[numOfFoundItems];
-		
-		for(int i = 0; i != addedItems; i++) 
+
+		for (int i = 0; i != addedItems; i++)
 		{
-			if(this.items[i].getName().equals(key))
+			if (this.items[i].getName().equals(key))
 			{
 				foundItems[numOfFoundItems] = this.items[i];
-				numOfFoundItems++;				
+				numOfFoundItems++;
 			}
 		}
 
-		if(numOfFoundItems != 0)
+		if (numOfFoundItems != 0)
 		{
 			System.arraycopy(foundItems, 0, result, 0, numOfFoundItems);
 		}
@@ -113,11 +113,11 @@ public class Tracker
 */
 	public Item findById(String id)
 	{
-		for(int i = 0; i != this.addedItems; i++) 
+		for (int i = 0; i != this.addedItems; i++)
 		{
-			if(this.items[i].getId().equals(id))
+			if (this.items[i].getId().equals(id))
 			{
-				return this.items[i];				
+				return this.items[i];	
 			}
 		}
 	}

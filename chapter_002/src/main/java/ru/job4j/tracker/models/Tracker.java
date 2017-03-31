@@ -94,7 +94,7 @@ public class Tracker {
 /**
  * the method finds an item by id in the items' array.
  * @param id - id of the item to find.
- * @return - return a found item of found items.
+ * @return - return a found item.
 */
 	public Item findById(String id) {
 		Item result = null;

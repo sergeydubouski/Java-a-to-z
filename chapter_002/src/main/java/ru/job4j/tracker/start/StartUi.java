@@ -6,22 +6,42 @@ package ru.job4j.tracker.start;
  * @version 1.0.
  * @since 01.04.2017.
 */
-public class StartUi {
-
-	Tracker tracker = new Tracker();
-	ConsoleInput consoleInput = new ConsoleInput();
-	private String userInput = null;
-
-/** 
- * the method starts the application.
- * @param args - user's input.
-*/
-	public static void main(String[] args){
-		
-		StartUi startUi = new StartUi();		
-
-		while(userInput != "6") {
-			Menu.displayMenuItems();
+class StartUi {
+	/**
+	 * ConsoleInput object.
+	*/
+	private ConsoleInput consoleInput = new ConsoleInput();
+	/**
+	 * Menu object.
+	*/
+	private Menu menu = new Menu();
+	/**
+	 * Action object.
+	*/
+	private Action action = new Action();
+	/**
+	 * constructor.
+	*/
+	StartUi() {
+		super();
+	}
+	/**
+	 * the method initializes the application.
+	*/
+	void init() {
+		String userInput = " ";
+		while (!userInput.equals(Action.EXIT_PROGRAM_NUMBER)) {
+			this.menu.displayMenuItems();
+			userInput = this.consoleInput.ask("SELECT: ");
+			this.action.actionToPerform(userInput);
 		}
+	}
+	/**
+	 * main method.
+	 * @param args - args.
+	*/
+	public static void main(String[] args) {
+		StartUi startUi = new StartUi();
+		startUi.init();
 	}
 }

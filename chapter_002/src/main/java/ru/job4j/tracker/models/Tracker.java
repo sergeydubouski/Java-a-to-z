@@ -84,12 +84,14 @@ public class Tracker {
 	public Item[] findByName(String key) {
 		int numOfFoundItems = 0;
 		Item[] foundItems = new Item[this.addedItems];
-		for (int i = 0; i != addedItems; i++) {
+		for (int i = 0; i != this.addedItems; i++) {
 			if (this.items[i].getName().equals(key)) {
 				foundItems[numOfFoundItems++] = this.items[i];
 			}
 		}
-		return foundItems;
+		Item[] result = new Item[numOfFoundItems];
+		System.arraycopy(foundItems, 0, result, 0, numOfFoundItems);
+		return result;
 	}
 /**
  * the method finds an item by id in the items' array.

@@ -104,24 +104,6 @@ public class TrackerTest {
 	 * Test.
 	*/
 	@Test
-	public void whenFindItemsByNameThenTrackerResturnsNull() {
-		final long firstId = 1L;
-		final long secondId = 2L;
-		final long thirdId = 3L;
-		final String expectedResultNull = null;
-		Item firstItem = new Item(firstId, "first item", "first description");
-		Item secondItem = new Item(secondId, "second item", "second description");
-		Item thirdItem = new Item(thirdId, "third item", "third item description");
-		Tracker tracker = new Tracker();
-		tracker.add(firstItem);
-		tracker.add(secondItem);
-		tracker.add(thirdItem);
-		assertThat(tracker.findByName("fourth item")[0], is(expectedResultNull));
-	}
-	/**
-	 * Test.
-	*/
-	@Test
 	public void whenFindItemsByIdThenTrackerResturnsFoundItems() {
 		final long firstId = 1L;
 		final long secondId = 2L;

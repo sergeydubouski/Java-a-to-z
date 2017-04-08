@@ -1,5 +1,8 @@
 package ru.job4j.tracker.start;
 
+import ru.job4j.tracker.models.Tracker;
+import ru.job4j.tracker.models.Item;
+
 /**
  * class StartUi.
  * @author Sergey Dubouski.
@@ -11,6 +14,10 @@ class StartUi {
 	 * ConsoleInput object.
 	*/
 	private ConsoleInput consoleInput = new ConsoleInput();
+	/**
+	 * tracker object.
+	*/
+	private Tracker tracker = new Tracker();
 	/**
 	 * Menu object.
 	*/
@@ -103,14 +110,6 @@ class StartUi {
 	*/
 	public static final String EXIT_PROGRAM_NUMBER = "6";
 	/**
-	 * tracker object.
-	*/
-	private Tracker tracker = new Tracker();
-	/**
-	 * consoleInput object.
-	*/
-	private ConsoleInput consoleInput = new ConsoleInput();
-	/**
 	 * constructor.
 	*/
 	StartUi() {
@@ -194,14 +193,6 @@ class StartUi {
 		}  else {
 			System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 			}
-	}
-	/**
-	 * the method performs an action based on a user's input.
-	 * @param userInput - user input based on menu items.
-	*/
-	void actionToPerform(String userInput) {
-		System.out.println(ConsoleOutput.INVALID_INPUT_MSG.getMessage());
-		}
 	}
 	/**
 	 * the method initializes the application.

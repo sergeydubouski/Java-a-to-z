@@ -17,7 +17,7 @@ class Action {
 		/**
 		 * output message to the user.
 		*/
-		ENTER_NAME_MSG("PLEASE ENTER THE NAME OF AN ITEM: "),
+		ENTER_NAME_MSG("PLEASE ENTER YOUR NAME: "),
 		/**
 		 * output message to the user.
 		*/
@@ -53,7 +53,7 @@ class Action {
 		/**
 		 * output message to the user.
 		*/
-		ITEM_NAME_MSG("ITEM NAME: "),
+		ITEM_NAME_MSG("NAME: "),
 		/**
 		 * output message to the user.
 		*/

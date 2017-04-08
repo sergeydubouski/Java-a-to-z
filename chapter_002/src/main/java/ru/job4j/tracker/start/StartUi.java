@@ -16,12 +16,6 @@ class StartUi {
 	*/
 	private Menu menu = new Menu();
 	/**
-	 * constructor.
-	*/
-	StartUi() {
-		super();
-	}
-	/**
 	 * console output to the user.
 	*/
 	private enum ConsoleOutput {
@@ -116,6 +110,12 @@ class StartUi {
 	 * consoleInput object.
 	*/
 	private ConsoleInput consoleInput = new ConsoleInput();
+	/**
+	 * constructor.
+	*/
+	StartUi() {
+		super();
+	}
 	/**
 	 * the method adds new item.
 	*/

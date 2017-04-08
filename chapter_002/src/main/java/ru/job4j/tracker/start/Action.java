@@ -13,7 +13,7 @@ class Action {
 	/**
 	 * console output to the user.
 	*/
-	enum ConsoleOutput {
+	private enum ConsoleOutput {
 		/**
 		 * output message to the user.
 		*/

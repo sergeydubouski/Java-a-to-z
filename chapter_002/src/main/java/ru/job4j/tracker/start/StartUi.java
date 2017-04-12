@@ -13,11 +13,11 @@ class StartUi {
 	/**
 	 * ConsoleInput object.
 	*/
-	private ConsoleInput consoleInput = new ConsoleInput();
+	private Input consoleInput;
 	/**
 	 * tracker object.
 	*/
-	private Tracker tracker = new Tracker();
+	private Tracker tracker;
 	/**
 	 * Menu object.
 	*/
@@ -111,9 +111,13 @@ class StartUi {
 	public static final String EXIT_PROGRAM_NUMBER = "6";
 	/**
 	 * constructor.
+	 * @param input - Input object.
+	 * @param tracker - Tracker object.
 	*/
-	StartUi() {
+	StartUi(Input input, Tracker tracker) {
 		super();
+		this.consoleInput = input;
+		this.tracker = tracker;
 	}
 	/**
 	 * the method adds new item.
@@ -168,8 +172,9 @@ class StartUi {
 	}
 	/**
 	 * the method finds an item by id.
+	 * @return - Item.
 	*/
-	private void findItemById() {
+	public Item findItemById() {
 		Item item = this.tracker.findById(this.consoleInput.ask(ConsoleOutput.ENTER_ID_OF_ITEM_TO_FIND_MSG.getMessage()));
 		if (item != null) {
 			System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
@@ -178,11 +183,13 @@ class StartUi {
 		} else {
 			System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 			}
+		return item;
 	}
 	/**
 	 * the method finds items by name.
+	 * @return - items;
 	*/
-	private void findItemsByName() {
+	public Item[] findItemsByName() {
 		Item[] items = this.tracker.findByName(this.consoleInput.ask(ConsoleOutput.ENTER_NAME_MSG.getMessage()));
 		if (items.length != 0) {
 			for (Item item : items) {
@@ -193,6 +200,7 @@ class StartUi {
 		}  else {
 			System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 			}
+		return items;
 	}
 	/**
 	 * the method initializes the application.
@@ -233,8 +241,8 @@ class StartUi {
 	 * main method.
 	 * @param args - args.
 	*/
-	public static void main(String[] args) {
-		StartUi startUi = new StartUi();
+	/*public static void main(String[] args) {
+		StartUi startUi = new StartUi(new ConsoleInput(), new Tracker());
 		startUi.init();
-	}
+	}*/
 }

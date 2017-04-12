@@ -1,0 +1,71 @@
+package ru.job4j.tracker.start;
+
+import ru.job4j.tracker.models.Tracker;
+import ru.job4j.tracker.models.Item;
+import org.junit.Test;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
+/**
+ * Test.
+ *
+ * @author Sergey Dubouski
+ * @version $id$
+ * @since 10.04.2017
+*/
+public class StubInputTest {
+
+	/**
+	 * Test.
+	*/
+	@Test
+	public void whenAddNewItemThenTrackerHasSameItem() {
+		Tracker tracker = new Tracker();
+		StartUi startUi = new StartUi(new StubInput(new String[] {"0", "first item", "first description", "6"}), tracker);
+		startUi.init();
+		assertThat(tracker.findAll()[0].getName(), is("first item"));
+	}
+	/**
+	 * Test.
+	*/
+	@Test
+	public void whenUpdatedItemThenTrackerHasUpdatedItem() {
+		Tracker tracker = new Tracker();
+		tracker.add(new Item(1, "first item", "first description")); // add an item
+		StartUi startUi = new StartUi(new StubInput(new String[] {"2", "1", "updated item's name", "updated item's description", "6"}), tracker);
+		startUi.init();
+		assertThat(tracker.findAll()[0].getName(), is("updated item's name"));
+	}
+	/**
+	 * Test.
+	*/
+	@Test
+	public void whenDeletedItemThenTrackerDoesNotHaveTheItem() {
+		Tracker tracker = new Tracker();
+		tracker.add(new Item(1, "first item", "first description")); // add first item
+		tracker.add(new Item(2, "second item", "second description")); // add second item
+		StartUi startUi = new StartUi(new StubInput(new String[] {"3", "1", "6"}), tracker);
+		startUi.init();
+		assertThat(tracker.findAll()[0].getName(), is("second item"));
+	}
+	/**
+	 * Test.
+	*/
+	@Test
+	public void whenFindItemByIdThenTrackerHasTheItem() {
+		Tracker tracker = new Tracker();
+		tracker.add(new Item(1, "first item", "first description")); // add first item
+		StartUi startUi = new StartUi(new StubInput(new String[] {"1"}), tracker);
+		assertThat(startUi.findItemById().getName(), is("first item"));
+	}
+	/**
+	 * Test.
+	*/
+	@Test
+	public void whenFindItemByNameThenTrackerHasTheItem() {
+		Tracker tracker = new Tracker();
+		tracker.add(new Item(1, "first item", "first description")); // add first item
+		StartUi startUi = new StartUi(new StubInput(new String[] {"first item"}), tracker);
+		assertThat(startUi.findItemsByName()[0].getName(), is("first item"));
+	}
+}

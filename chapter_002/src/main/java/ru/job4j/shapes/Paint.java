@@ -1,4 +1,4 @@
-package ru.job4j.tracker.shapes;
+package ru.job4j.shapes;
 
 /**
  * class Paint.

@@ -1,4 +1,4 @@
-package ru.job4j.shapes;
+package ru.job4j.tracker.shapes;
 
 /**
  * class Triangle.

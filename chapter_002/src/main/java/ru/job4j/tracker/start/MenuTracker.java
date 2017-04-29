@@ -107,7 +107,7 @@ public class MenuTracker {
 	/**
 	 * Input object.
 	*/
-	private Input input;
+	private Input consoleInput;
 	/**
 	 * constructor.
 	 * @param tracker - tracker.
@@ -116,7 +116,7 @@ public class MenuTracker {
 	MenuTracker(Tracker tracker, Input input) {
 		super();
 		this.tracker = tracker;
-		this.input = input;
+		this.consoleInput = input;
 	}
 	/**
 	 * the method fills action array.
@@ -201,7 +201,7 @@ public class MenuTracker {
 					System.out.println(MenuTracker.ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
 				}
 			}  else {
-				System.out.println(MenuTracker.this.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 		}
 		/**
@@ -332,7 +332,7 @@ public class MenuTracker {
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		String key() {
+		public String key() {
 			return "5";
 		}
 		/**

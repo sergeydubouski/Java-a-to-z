@@ -93,7 +93,7 @@ class MenuTracker {
 	/**
 	 * variable contains a number of actions.
 	*/
-	private static final int NUMBER_OF_ACTIONS = 6;	
+	private static final int NUMBER_OF_ACTIONS = 6;
 	/**
 	 * variable contains action's objects.
 	*/
@@ -101,13 +101,15 @@ class MenuTracker {
 	/**
 	 * Tracker object.
 	*/
-	Tracker tracker;
+	private Tracker tracker;
 	/**
 	 * Input object.
 	*/
-	Input input;
+	private Input input;
 	/**
 	 * constructor.
+	 * @param tracker - tracker.
+	 * @param input - input.
 	*/
 	MenuTracker(Tracker tracker, Input input) {
 		super();
@@ -129,12 +131,13 @@ class MenuTracker {
 	 * the method shows a menu.
 	*/
 	void displayMenu() {
-		for(int i = 0; i != this.action.length; i++) {
+		for (int i = 0; i != this.action.length; i++) {
 			System.out.println(this.action[i].info());
 		}
 	}
 	/**
 	 * the method shows a menu.
+	 * @param userChoice - user choice.
 	*/
 	void perform(String userChoice) {
 		if (userChoice.equals("0") && userChoice.equals("1") && userChoice.equals("2") && userChoice.equals("3") && userChoice.equals("4") && userChoice.equals("5")) {

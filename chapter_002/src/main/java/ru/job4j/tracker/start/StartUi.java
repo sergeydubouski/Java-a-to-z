@@ -1,7 +1,6 @@
 package ru.job4j.tracker.start;
 
 import ru.job4j.tracker.models.Tracker;
-//import ru.job4j.tracker.models.Item;
 
 /**
  * class StartUi.
@@ -32,16 +31,16 @@ class StartUi {
 		menu.fillActions();
 		do {
 			menu.displayMenu();
-			key = input.ask("SELECT: ");
+			String key = input.ask("SELECT: ");
 			menu.perform(key);
-		} while (!"y".equals(this.input.ask("Enter y to exit the program")));
+		} while (!"y".equals(input.ask("Enter y to exit the program")));
 	}
 	/**
 	 * main method.
 	 * @param args - args.
 	*/
 	public static void main(String[] args) {
-		new startUi.init();
+		new StartUi().init();
 	}
 	/**
 	 * the method initializes the application.

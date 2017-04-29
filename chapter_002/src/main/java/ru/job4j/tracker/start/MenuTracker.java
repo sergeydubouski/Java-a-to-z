@@ -1,12 +1,14 @@
 package ru.job4j.tracker.start;
 
+import ru.job4j.tracker.models.Tracker;
+import ru.job4j.tracker.models.Item;
 /**
  * class MenuTracker.
  * @author Sergey Dubouski.
  * @version 1.0.
  * @since 26.04.2017.
 */
-class MenuTracker {
+public class MenuTracker {
 	/**
 	 * console output to the user.
 	*/
@@ -120,12 +122,12 @@ class MenuTracker {
 	 * the method fills action array.
 	*/
 	void fillActions() {
-		this.action[0] = new AddItem();
-		this.action[1] = new ShowItems();
-		this.action[2] = new EditItem();
-		this.action[3] = new DeleteItem();
-		this.action[4] = new FindItemById();
-		this.action[5] = new FindItemByName();
+		this.action[Integer.valueOf("0")] = new AddItem();
+		this.action[Integer.valueOf("1")] = new ShowItems();
+		this.action[Integer.valueOf("2")] = new EditItem();
+		this.action[Integer.valueOf("3")] = new DeleteItem();
+		this.action[Integer.valueOf("4")] = new FindItemById();
+		this.action[Integer.valueOf("5")] = new FindItemByName();
 	}
 	/**
 	 * the method shows a menu.
@@ -150,28 +152,28 @@ class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class AddItem implements UserAction {
+	class AddItem implements UserAction {
 		/**
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		int key() {
-			return 0;
+		String key() {
+			return "0";
 		}
 		/**
 		 * the method exectutes a user's request.
 		*/
 		void execute() {
-			String name = this.consoleInput.ask(ConsoleOutput.ENTER_NAME_MSG.getMessage());
-			String description = this.consoleInput.ask(ConsoleOutput.ENTER_DESCRIPTION_MSG.getMessage());
-			this.tracker.add(new Item(System.currentTimeMillis(), name, description));
+			String name = MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_NAME_MSG.getMessage());
+			String description = MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_DESCRIPTION_MSG.getMessage());
+			MenuTracker.this.tracker.add(new Item(System.currentTimeMillis(), name, description));
 		}
 		/**
 		 * the method returns an action's description.
 		 * @return - description.
 		*/
 		String info() {
-			return String.format("%d. %s", this.key(), "Add item");
+			return String.format("%s. %s", this.key(), "Add item");
 		}
 	}
 	/**
@@ -179,27 +181,27 @@ class MenuTracker {
 	 * @author Sergey Dubouski.
 	 * @version 1.0.
 	 * @since 27.04.2017
-	*/	
-	private class ShowItems implements UserAction {
+	*/
+	class ShowItems implements UserAction {
 		/**
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		int key() {
-			return 1;
+		String key() {
+			return "1";
 		}
 		/**
 		 * the method exectutes a user's request.
 		*/
 		void execute() {
-			if (this.tracker.findAll().length != 0) {
-				for (Item item : tracker.findAll()) {
-					System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
-					System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
-					System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+			if (MenuTracker.this.tracker.findAll().length != 0) {
+				for (Item item : MenuTracker.this.tracker.findAll()) {
+					System.out.println(MenuTracker.ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+					System.out.println(MenuTracker.ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+					System.out.println(MenuTracker.ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
 				}
 			}  else {
-				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				System.out.println(MenuTracker.this.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 		}
 		/**
@@ -207,7 +209,7 @@ class MenuTracker {
 		 * @return - description.
 		*/
 		String info() {
-			return String.format("%d. %s", this.key(), "Show all items");
+			return String.format("%s. %s", this.key(), "Show all items");
 		}
 	}
 	/**
@@ -216,30 +218,30 @@ class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class EditItem implements UserAction {
+	class EditItem implements UserAction {
 		/**
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		int key() {
-			return 2;
+		String key() {
+			return "2";
 		}
 		/**
 		 * the method exectutes a user's request.
 		*/
 		void execute() {
-			Item item = this.tracker.findById(this.consoleInput.ask(ConsoleOutput.ENTER_ID_OF_ITEM_TO_EDIT_MSG.getMessage()));
+			Item item = MenuTracker.this.tracker.findById(MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_ID_OF_ITEM_TO_EDIT_MSG.getMessage()));
 			if (item != null) {
-				System.out.println(ConsoleOutput.ITEM_TO_EDIT_MSG.getMessage());
-				System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
-				System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
-				System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
-				System.out.println(ConsoleOutput.EDIT_FIELDS_MSG.getMessage());
-				String name = this.consoleInput.ask(ConsoleOutput.ENTER_NEW_NAME_MSG.getMessage());
-				String description = this.consoleInput.ask(ConsoleOutput.ENTER_NEW_DESCRIPTION_MSG.getMessage());
-				this.tracker.update(new Item(item.getId(), name, description));
+				System.out.println(MenuTracker.ConsoleOutput.ITEM_TO_EDIT_MSG.getMessage());
+				System.out.println(MenuTracker.ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+				System.out.println(MenuTracker.ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+				System.out.println(MenuTracker.ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+				System.out.println(MenuTracker.ConsoleOutput.EDIT_FIELDS_MSG.getMessage());
+				String name = MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_NEW_NAME_MSG.getMessage());
+				String description = MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_NEW_DESCRIPTION_MSG.getMessage());
+				MenuTracker.this.tracker.update(new Item(item.getId(), name, description));
 			} else {
-				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 		}
 		/**
@@ -247,8 +249,8 @@ class MenuTracker {
 		 * @return - description.
 		*/
 		String info() {
-			return String.format("%d. %s", this.key(), "Edit item");
-		}		
+			return String.format("%s. %s", this.key(), "Edit item");
+		}
 	}
 	/**
 	 * class DeleteItem.
@@ -256,23 +258,23 @@ class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class DeleteItem implements UserAction {
+	class DeleteItem implements UserAction {
 		/**
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		int key() {
-			return 3;
-		}	
+		String key() {
+			return "3";
+		}
 		/**
 		 * the method exectutes a user's request.
 		*/
 		void execute() {
-			Item item = this.tracker.findById(this.consoleInput.ask(ConsoleOutput.ENTER_ID_OF_ITEM_TO_DELETE_MSG.getMessage()));
+			Item item = MenuTracker.this.tracker.findById(MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_ID_OF_ITEM_TO_DELETE_MSG.getMessage()));
 			if (item != null) {
-				this.tracker.delete(item);
+				MenuTracker.this.tracker.delete(item);
 			} else {
-				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 		}
 		/**
@@ -281,7 +283,7 @@ class MenuTracker {
 		*/
 		String info() {
 			return String.format("%s. %s", this.key(), "Delete item");
-		}	
+		}
 	}
 	/**
 	 * class FindItemById.
@@ -289,25 +291,25 @@ class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017.
 	*/
-	private class FindItemById implements UserAction {
+	class FindItemById implements UserAction {
 		/**
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		int key() {
-			return 4;
+		String key() {
+			return "4";
 		}
 		/**
 		 * the method exectutes a user's request.
 		*/
 		void execute() {
-			Item item = this.tracker.findById(this.consoleInput.ask(ConsoleOutput.ENTER_ID_OF_ITEM_TO_FIND_MSG.getMessage()));
+			Item item = MenuTracker.this.tracker.findById(MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_ID_OF_ITEM_TO_FIND_MSG.getMessage()));
 			if (item != null) {
-				System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
-				System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
-				System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+				System.out.println(MenuTracker.ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+				System.out.println(MenuTracker.ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+				System.out.println(MenuTracker.ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
 			} else {
-				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 			return item;
 		}
@@ -316,8 +318,8 @@ class MenuTracker {
 		 * @return - description.
 		*/
 		String info() {
-			return String.format("%d. %s", this.key(), "Find item by id");
-		}	
+			return String.format("%s. %s", this.key(), "Find item by id");
+		}
 	}
 	/**
 	 * class FindItemByName.
@@ -325,27 +327,27 @@ class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class FindItemByName implements UserAction {
+	class FindItemByName implements UserAction {
 		/**
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		int key() {
-			return 5;
+		String key() {
+			return "5";
 		}
 		/**
 		 * the method exectutes a user's request.
 		*/
 		void execute() {
-			Item[] items = this.tracker.findByName(this.consoleInput.ask(ConsoleOutput.ENTER_NAME_MSG.getMessage()));
+			Item[] items = MenuTracker.this.tracker.findByName(MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_NAME_MSG.getMessage()));
 			if (items.length != 0) {
 				for (Item item : items) {
-					System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
-					System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
-					System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+					System.out.println(MenuTracker.ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+					System.out.println(MenuTracker.ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+					System.out.println(MenuTracker.ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
 				}
 			}  else {
-				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 			return items;
 		}
@@ -354,7 +356,7 @@ class MenuTracker {
 		 * @return - description.
 		*/
 		String info() {
-			return String.format("%d. %s", this.key(), "Find item by name");
+			return String.format("%s. %s", this.key(), "Find item by name");
 		}
 	}
 }

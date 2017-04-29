@@ -152,7 +152,7 @@ public class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	class AddItem implements UserAction {
+	public class AddItem implements UserAction {
 		/**
 		 * the method returns a key.
 		 * @return - key.

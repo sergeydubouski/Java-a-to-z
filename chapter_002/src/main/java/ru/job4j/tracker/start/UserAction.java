@@ -6,7 +6,7 @@ package ru.job4j.tracker.start;
  * @version 1.0.
  * @since 26.04.2017.
 */
-interface UserAction {
+public interface UserAction {
 	/**
 	 * the method returns a key.
 	 * @return - key.

@@ -8,77 +8,41 @@ import ru.job4j.tracker.models.Tracker;
  * @version 1.0.
  * @since 01.04.2017.
 */
-class StartUi {
+public class StartUi {
 	/**
-	 * ConsoleInput object.
+	 * Tracker object.
 	*/
+	private Tracker tracker;
 	/**
-	 * the variable contains user input to exit the program.
+	 * Input object.
 	*/
-	//public static final String EXIT_PROGRAM_NUMBER = "6";
+	private Input input;
 	/**
 	 * constructor.
+	 * @param tracker - tracker.
+	 * @param input - input.
 	*/
-	StartUi() {
+	StartUi(Tracker tracker, Input input) {
 		super();
+		this.tracker = tracker;
+		this.input = input;
 	}
 	/**
 	 * init method.
 	*/
 	void init() {
-		Input input = new ConsoleInput();
-		MenuTracker menu = new MenuTracker(new Tracker(), input);
+		MenuTracker menu = new MenuTracker(this.tracker, this.input);
 		menu.fillActions();
 		do {
 			menu.displayMenu();
-			String key = input.ask("SELECT: ");
-			menu.perform(key);
-		} while (!"y".equals(input.ask("Enter y to exit the program")));
+			menu.perform(input.ask("SELECT: "));
+		} while (!"y".equals(input.ask("Enter y to exit the program: ")));
 	}
 	/**
 	 * main method.
 	 * @param args - args.
 	*/
-	public static void main(String[] args) {
-		new StartUi().init();
-	}
-	/**
-	 * the method initializes the application.
-	*/
-	/*void init() {
-		String userInput = " ";
-		while (!userInput.equals(StartUi.EXIT_PROGRAM_NUMBER)) {
-			this.menu.displayMenuItems();
-			userInput = this.consoleInput.ask("SELECT: ");
-			switch (userInput) {
-				case "0":
-					this.addNewItem();
-					break;
-				case "1":
-					this.showAllItems();
-					break;
-				case "2":
-					this.editItem();
-					break;
-				case "3":
-					this.deleteItem();
-					break;
-				case "4":
-					this.findItemById();
-					break;
-				case "5":
-					this.findItemsByName();
-					break;
-				case "6":
-					System.out.println(ConsoleOutput.PROGRAM_SHUT_DOWN_MSG.getMessage());
-					break;
-				default:
-					System.out.println(ConsoleOutput.INVALID_INPUT_MSG.getMessage());
-			}
-		}
+	/*public static void main(String[] args) {
+		new StartUi(new Tracker(), new ConsoleInput()).init();
 	}*/
-	/**
-	 * Menu object.
-	*/
-	//private Menu menu = new Menu();
 }

@@ -7,32 +7,351 @@ package ru.job4j.tracker.start;
  * @since 26.04.2017.
 */
 class MenuTracker {
-
+	/**
+	 * console output to the user.
+	*/
+	private enum ConsoleOutput {
+		/**
+		 * output message to the user.
+		*/
+		ENTER_NAME_MSG("PLEASE ENTER YOUR NAME: "),
+		/**
+		 * output message to the user.
+		*/
+		ENTER_DESCRIPTION_MSG("PLEASE ENTER THE DESCRIPTION OF AN ITEM: "),
+		/**
+		 * output message to the user.
+		*/
+		ENTER_NEW_DESCRIPTION_MSG("PLEASE ENTER A NEW DESCRIPTION: "),
+		/**
+		 * output message to the user.
+		*/
+		EDIT_FIELDS_MSG("PLEASE EDIT THE FOLLOWING FIELDS:"),
+		/**
+		 * output message to the user.
+		*/
+		ENTER_NEW_NAME_MSG("PLEASE ENTER A NEW NAME: "),
+		/**
+		 * output message to the user.
+		*/
+		ENTER_ID_OF_ITEM_TO_EDIT_MSG("PLEASE ENTER THE ID OF AN ITEM YOU WOULD LIKE TO EDIT: "),
+		/**
+		 * output message to the user.
+		*/
+		ENTER_ID_OF_ITEM_TO_FIND_MSG("PLEASE ENTER THE ID OF AN ITEM YOU WOULD LIKE TO FIND: "),
+		/**
+		 * output message to the user.
+		*/
+		ENTER_ID_OF_ITEM_TO_DELETE_MSG("PLEASE ENTER THE ID OF AN ITEM YOU WOULD LIKE TO DELETE: "),
+		/**
+		 * output message to the user.
+		*/
+		ITEM_ID_MSG("ITEM ID: "),
+		/**
+		 * output message to the user.
+		*/
+		ITEM_NAME_MSG("NAME: "),
+		/**
+		 * output message to the user.
+		*/
+		ITEM_DESCRIPTION_MSG("ITEM DESCRIPTION: "),
+		/**
+		 * output message to the user.
+		*/
+		ITEM_TO_EDIT_MSG("ITEM TO EDIT IS:"),
+		/**
+		 * output message to the user.
+		*/
+		PROGRAM_SHUT_DOWN_MSG("PROGRAM IS SHUTTING DOWN"),
+		/**
+		 * output message to the user.
+		*/
+		NO_ITEMS_FOUND_MSG("NO ITEMS FOUND, PLEASE SELECT ANOTHER OPTION"),
+		/**
+		 * output message to the user.
+		*/
+		INVALID_INPUT_MSG("INVALID INPUT, PLEASE SELECT ANOTHER OPTION");
+		/**
+		 * the variable contains a message to the user.
+		*/
+		private final String message;
+		/**
+		 * constructor.
+		 * @param message - message.
+		*/
+		ConsoleOutput(String message) {
+			this.message = message;
+		}
+		/**
+		 * the method returns an output to the user.
+		 * @return - response.
+		*/
+		String getMessage() {
+			return this.message;
+		}
+	}
+	/**
+	 * variable contains a number of actions.
+	*/
+	private static final int NUMBER_OF_ACTIONS = 6;	
+	/**
+	 * variable contains action's objects.
+	*/
+	private UserAction[] action = new UserAction[NUMBER_OF_ACTIONS];
+	/**
+	 * Tracker object.
+	*/
+	Tracker tracker;
+	/**
+	 * Input object.
+	*/
+	Input input;
 	/**
 	 * constructor.
 	*/
-	MenuTracker() {
+	MenuTracker(Tracker tracker, Input input) {
 		super();
+		this.tracker = tracker;
+		this.input = input;
 	}
-	
 	/**
-	 * variable comtains actions' objects.
+	 * the method fills action array.
 	*/
-	private UserAction[] action = new UserAction[];
-	
-	class ShowItems implements UserAction {
-		
+	void fillActions() {
+		this.action[0] = new AddItem();
+		this.action[1] = new ShowItems();
+		this.action[2] = new EditItem();
+		this.action[3] = new DeleteItem();
+		this.action[4] = new FindItemById();
+		this.action[5] = new FindItemByName();
 	}
-	class EditItem implements UserAction {
-		
+	/**
+	 * the method shows a menu.
+	*/
+	void displayMenu() {
+		for(int i = 0; i != this.action.length; i++) {
+			System.out.println(this.action[i].info());
+		}
 	}
-	class DeleteItem implements UserAction {
-		
+	/**
+	 * the method shows a menu.
+	*/
+	void perform(String userChoice) {
+		if (userChoice.equals("0") && userChoice.equals("1") && userChoice.equals("2") && userChoice.equals("3") && userChoice.equals("4") && userChoice.equals("5")) {
+			this.action[Integer.valueOf(userChoice)].execute();
+		}
 	}
-	class FindItemById implements UserAction {
-		
+	/**
+	 * class AddItem.
+	 * @author Sergey Dubouski.
+	 * @version 1.0.
+	 * @since 27.04.2017
+	*/
+	private class AddItem implements UserAction {
+		/**
+		 * the method returns a key.
+		 * @return - key.
+		*/
+		int key() {
+			return 0;
+		}
+		/**
+		 * the method exectutes a user's request.
+		*/
+		void execute() {
+			String name = this.consoleInput.ask(ConsoleOutput.ENTER_NAME_MSG.getMessage());
+			String description = this.consoleInput.ask(ConsoleOutput.ENTER_DESCRIPTION_MSG.getMessage());
+			this.tracker.add(new Item(System.currentTimeMillis(), name, description));
+		}
+		/**
+		 * the method returns an action's description.
+		 * @return - description.
+		*/
+		String info() {
+			return String.format("%d. %s", this.key(), "Add item");
+		}
 	}
-	class FindItemByName implements UserAction {
-		
+	/**
+	 * class ShowItems.
+	 * @author Sergey Dubouski.
+	 * @version 1.0.
+	 * @since 27.04.2017
+	*/	
+	private class ShowItems implements UserAction {
+		/**
+		 * the method returns a key.
+		 * @return - key.
+		*/
+		int key() {
+			return 1;
+		}
+		/**
+		 * the method exectutes a user's request.
+		*/
+		void execute() {
+			if (this.tracker.findAll().length != 0) {
+				for (Item item : tracker.findAll()) {
+					System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+					System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+					System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+				}
+			}  else {
+				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				}
+		}
+		/**
+		 * the method returns an action's description.
+		 * @return - description.
+		*/
+		String info() {
+			return String.format("%d. %s", this.key(), "Show all items");
+		}
+	}
+	/**
+	 * class EditItem.
+	 * @author Sergey Dubouski.
+	 * @version 1.0.
+	 * @since 27.04.2017
+	*/
+	private class EditItem implements UserAction {
+		/**
+		 * the method returns a key.
+		 * @return - key.
+		*/
+		int key() {
+			return 2;
+		}
+		/**
+		 * the method exectutes a user's request.
+		*/
+		void execute() {
+			Item item = this.tracker.findById(this.consoleInput.ask(ConsoleOutput.ENTER_ID_OF_ITEM_TO_EDIT_MSG.getMessage()));
+			if (item != null) {
+				System.out.println(ConsoleOutput.ITEM_TO_EDIT_MSG.getMessage());
+				System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+				System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+				System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+				System.out.println(ConsoleOutput.EDIT_FIELDS_MSG.getMessage());
+				String name = this.consoleInput.ask(ConsoleOutput.ENTER_NEW_NAME_MSG.getMessage());
+				String description = this.consoleInput.ask(ConsoleOutput.ENTER_NEW_DESCRIPTION_MSG.getMessage());
+				this.tracker.update(new Item(item.getId(), name, description));
+			} else {
+				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				}
+		}
+		/**
+		 * the method returns an action's description.
+		 * @return - description.
+		*/
+		String info() {
+			return String.format("%d. %s", this.key(), "Edit item");
+		}		
+	}
+	/**
+	 * class DeleteItem.
+	 * @author Sergey Dubouski.
+	 * @version 1.0.
+	 * @since 27.04.2017
+	*/
+	private class DeleteItem implements UserAction {
+		/**
+		 * the method returns a key.
+		 * @return - key.
+		*/
+		int key() {
+			return 3;
+		}	
+		/**
+		 * the method exectutes a user's request.
+		*/
+		void execute() {
+			Item item = this.tracker.findById(this.consoleInput.ask(ConsoleOutput.ENTER_ID_OF_ITEM_TO_DELETE_MSG.getMessage()));
+			if (item != null) {
+				this.tracker.delete(item);
+			} else {
+				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				}
+		}
+		/**
+		 * the method returns an action's description.
+		 * @return - description.
+		*/
+		String info() {
+			return String.format("%s. %s", this.key(), "Delete item");
+		}	
+	}
+	/**
+	 * class FindItemById.
+	 * @author Sergey Dubouski.
+	 * @version 1.0.
+	 * @since 27.04.2017.
+	*/
+	private class FindItemById implements UserAction {
+		/**
+		 * the method returns a key.
+		 * @return - key.
+		*/
+		int key() {
+			return 4;
+		}
+		/**
+		 * the method exectutes a user's request.
+		*/
+		void execute() {
+			Item item = this.tracker.findById(this.consoleInput.ask(ConsoleOutput.ENTER_ID_OF_ITEM_TO_FIND_MSG.getMessage()));
+			if (item != null) {
+				System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+				System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+				System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+			} else {
+				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				}
+			return item;
+		}
+		/**
+		 * the method returns an action's description.
+		 * @return - description.
+		*/
+		String info() {
+			return String.format("%d. %s", this.key(), "Find item by id");
+		}	
+	}
+	/**
+	 * class FindItemByName.
+	 * @author Sergey Dubouski.
+	 * @version 1.0.
+	 * @since 27.04.2017
+	*/
+	private class FindItemByName implements UserAction {
+		/**
+		 * the method returns a key.
+		 * @return - key.
+		*/
+		int key() {
+			return 5;
+		}
+		/**
+		 * the method exectutes a user's request.
+		*/
+		void execute() {
+			Item[] items = this.tracker.findByName(this.consoleInput.ask(ConsoleOutput.ENTER_NAME_MSG.getMessage()));
+			if (items.length != 0) {
+				for (Item item : items) {
+					System.out.println(ConsoleOutput.ITEM_ID_MSG.getMessage() + item.getId());
+					System.out.println(ConsoleOutput.ITEM_NAME_MSG.getMessage() + item.getName());
+					System.out.println(ConsoleOutput.ITEM_DESCRIPTION_MSG.getMessage() + item.getDescription());
+				}
+			}  else {
+				System.out.println(ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
+				}
+			return items;
+		}
+		/**
+		 * the method returns an action's description.
+		 * @return - description.
+		*/
+		String info() {
+			return String.format("%d. %s", this.key(), "Find item by name");
+		}
 	}
 }

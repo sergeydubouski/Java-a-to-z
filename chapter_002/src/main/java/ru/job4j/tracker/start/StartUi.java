@@ -35,14 +35,14 @@ public class StartUi {
 		menu.fillActions();
 		do {
 			menu.displayMenu();
-			menu.perform(input.ask("SELECT: "));
+			menu.perform(new ValidateInput().ask("SELECT: ", new range{"0","1","2","3","4","5"}));
 		} while (!"y".equals(input.ask("Enter y to exit the program: ")));
 	}
 	/**
 	 * main method.
 	 * @param args - args.
 	*/
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		new StartUi(new Tracker(), new ConsoleInput()).init();
-	}*/
+	}
 }

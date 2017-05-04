@@ -142,11 +142,7 @@ public class MenuTracker {
 	 * @param userChoice - user choice.
 	*/
 	void perform(String userChoice) {
-		if ("0".equals(userChoice) || userChoice.equals("1") || userChoice.equals("2") || userChoice.equals("3") || userChoice.equals("4") || userChoice.equals("5")) {
-			this.action[Integer.valueOf(userChoice)].execute();
-		} else {
-			System.out.println(MenuTracker.ConsoleOutput.INVALID_INPUT_MSG.getMessage());
-		}
+		this.action[Integer.valueOf(userChoice)].execute();
 	}
 	/**
 	 * class AddItem.

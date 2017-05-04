@@ -122,12 +122,18 @@ public class MenuTracker {
 	 * the method fills action array.
 	*/
 	void fillActions() {
-		this.action[Integer.valueOf("0")] = new AddItem();
-		this.action[Integer.valueOf("1")] = new ShowItems();
-		this.action[Integer.valueOf("2")] = new EditItem();
-		this.action[Integer.valueOf("3")] = new DeleteItem();
-		this.action[Integer.valueOf("4")] = new FindItemById();
-		this.action[Integer.valueOf("5")] = new FindItemByName();
+		int firstOption = 0;
+		int secondOption = 1;
+		int thirdOption = 2;
+		int fourthOption = 3;
+		int fifthOption = 4;
+		int sixthOption = 5;
+		this.action[ firstOption] = new AddItem();
+		this.action[secondOption] = new ShowItems();
+		this.action[thirdOption] = new EditItem();
+		this.action[fourthOption] = new DeleteItem();
+		this.action[fifthOption] = new FindItemById();
+		this.action[sixthOption] = new FindItemByName();
 	}
 	/**
 	 * the method shows a menu.
@@ -155,8 +161,9 @@ public class MenuTracker {
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		public String key() {
-			return "0";
+		public int key() {
+			int option = 0;
+			return option;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -185,8 +192,9 @@ public class MenuTracker {
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		public String key() {
-			return "1";
+		public int key() {
+			int option = 1;
+			return option;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -221,8 +229,9 @@ public class MenuTracker {
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		public String key() {
-			return "2";
+		public int key() {
+			int option = 2;
+			return option;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -261,8 +270,9 @@ public class MenuTracker {
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		public String key() {
-			return "3";
+		public int key() {
+			int option = 3;
+			return option;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -294,8 +304,9 @@ public class MenuTracker {
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		public String key() {
-			return "4";
+		public int key() {
+			int option = 4;
+			return option;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -330,8 +341,9 @@ public class MenuTracker {
 		 * the method returns a key.
 		 * @return - key.
 		*/
-		public String key() {
-			return "5";
+		public int key() {
+			int option = 5;
+			return option;
 		}
 		/**
 		 * the method exectutes a user's request.

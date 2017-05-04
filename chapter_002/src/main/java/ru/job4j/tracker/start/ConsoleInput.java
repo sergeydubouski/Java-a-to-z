@@ -30,26 +30,29 @@ class ConsoleInput implements Input {
 		System.out.print(question);
 		return this.scanner.nextLine();
 	}
-	
+
 	/**
 	 * the method ask a question to a user.
 	 * @param question - question to ask.
 	 * @param range - menu options.
+	 * @throws MenuOutOfRangeException - exception.
 	 * @return - return the user' answer.
 	*/
 	public String ask(String question, String[] range) {
 		boolean isInRange = false;
+		String key = " ";
 		System.out.print(question);
 		String userInput = this.scanner.nextLine();
-		for(String value : range) {
-			if(userInput.equals(value)) {
+		for (String value : range) {
+			if (userInput.equals(value)) {
 				isInRange = true;
 				return value;
-				break;
 			}
 		}
-		if(!isInRange) {
+		if (!isInRange) {
 			throw new MenuOutOfRangeException("PLEASE ENTER A VALID OPTION");
+		} else {
+			return key;
 		}
 	}
 }

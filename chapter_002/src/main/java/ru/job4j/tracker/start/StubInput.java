@@ -31,4 +31,14 @@ public class StubInput implements Input {
 	public String ask(String question) {
 		return this.answers[position++];
 	}
+	/**
+	 * the method ask a question to a user.
+	 * @param question - question to ask.
+	 * @param range - menu options.
+	 * @throws MenuOutOfRangeException - exception.
+	 * @return - return the user' answer.
+	*/
+	public String ask(String question, String[] range) {
+		return this.ask(question);
+	}
 }

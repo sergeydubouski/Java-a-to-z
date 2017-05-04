@@ -14,4 +14,12 @@ public interface Input {
 	 * @return - return the user' answer.
 	*/
 	String ask(String question);
+	/**
+	 * the method ask a question to a user.
+	 * @param question - question to ask.
+	 * @param range - menu options.
+	 * @throws MenuOutOfRangeException - exception.
+	 * @return - return the user' answer.
+	*/
+	String ask(String question, String[] range);
 }

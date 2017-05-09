@@ -97,30 +97,6 @@ public class MenuTracker {
 	*/
 	private static final int NUMBER_OF_ACTIONS = 6;
 	/**
-	 * variable contains an option.
-	*/
-	private static final int FIRST_OPTION = 0;
-	/**
-	 * variable contains an option.
-	*/
-	private static final int SECOND_OPTION = 1;
-	/**
-	 * variable contains an option.
-	*/
-	private static final int THIRD_OPTION = 2;
-	/**
-	 * variable contains an option.
-	*/
-	private static final int FOURTH_OPTION = 3;
-	/**
-	 * variable contains an option.
-	*/
-	private static final int FIFTH_OPTION = 4;
-	/**
-	 * variable contains an option.
-	*/
-	private static final int SIXTH_OPTION = 5;
-	/**
 	 * variable contains action's objects.
 	*/
 	private UserAction[] action = new UserAction[NUMBER_OF_ACTIONS];
@@ -132,6 +108,10 @@ public class MenuTracker {
 	 * Input object.
 	*/
 	private Input consoleInput;
+	/**
+	 * position in an array.
+	*/
+	private int position = 0;
 	/**
 	 * constructor.
 	 * @param tracker - tracker.
@@ -146,12 +126,12 @@ public class MenuTracker {
 	 * the method fills action array.
 	*/
 	void fillActions() {
-		this.action[FIRST_OPTION] = new AddItem();
-		this.action[SECOND_OPTION] = new ShowItems();
-		this.action[THIRD_OPTION] = new EditItem();
-		this.action[FOURTH_OPTION] = new DeleteItem();
-		this.action[FIFTH_OPTION] = new FindItemById();
-		this.action[SIXTH_OPTION] = new FindItemByName();
+		this.action[position++] = new AddItem();
+		this.action[position++] = new ShowItems();
+		this.action[position++] = new EditItem();
+		this.action[position++] = new DeleteItem();
+		this.action[position++] = new FindItemById();
+		this.action[position++] = new FindItemByName();
 	}
 	/**
 	 * the method shows a menu.
@@ -180,7 +160,7 @@ public class MenuTracker {
 		 * @return - key.
 		*/
 		public int key() {
-			return MenuTracker.FIRST_OPTION;
+			return 0;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -210,7 +190,7 @@ public class MenuTracker {
 		 * @return - key.
 		*/
 		public int key() {
-			return MenuTracker.SECOND_OPTION;
+			return 1;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -246,7 +226,7 @@ public class MenuTracker {
 		 * @return - key.
 		*/
 		public int key() {
-			return MenuTracker.THIRD_OPTION;
+			return 2;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -286,7 +266,7 @@ public class MenuTracker {
 		 * @return - key.
 		*/
 		public int key() {
-			return MenuTracker.FOURTH_OPTION;
+			return 3;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -319,7 +299,7 @@ public class MenuTracker {
 		 * @return - key.
 		*/
 		public int key() {
-			return MenuTracker.FIFTH_OPTION;
+			return 4;
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -355,7 +335,7 @@ public class MenuTracker {
 		 * @return - key.
 		*/
 		public int key() {
-			return MenuTracker.SIXTH_OPTION;
+			return 5;
 		}
 		/**
 		 * the method exectutes a user's request.

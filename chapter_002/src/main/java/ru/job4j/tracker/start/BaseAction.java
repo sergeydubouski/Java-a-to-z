@@ -8,30 +8,27 @@ package ru.job4j.tracker.start;
 */
 public abstract class BaseAction implements UserAction {
 	/**
+	 * variable name contains a name of an action.
+	*/
+	private String name;
+	/**
+	 * variable key contains a number of an action.
+	*/
+	private int key;
+	/**
 	 * constructor.
 	 * @param name - name.
+	 * @param key - key.
 	*/
-	public BaseAction(String name) {
-
+	public BaseAction(String name, int key) {
+		this.name = name;
+		this.key = key;
 	}
 	/**
-	 * the method returns a key.
-	 * @return - key.
+	 * the method returns info.
+	 * @return - info.
 	*/
-	abstract int key() {
-
-	}
-	/**
-	 * the method exectutes a user's request.
-	*/
-	abstract void execute() {
-
-	}
-	/**
-	 * the method returns an action's description.
-	 * @return - description.
-	*/
-	abstract String info() {
-
+	public String info() {
+		return String.format("%s. %s", this.key, this.name);
 	}
 }

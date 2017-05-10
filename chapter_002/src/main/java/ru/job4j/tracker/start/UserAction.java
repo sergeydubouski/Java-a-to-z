@@ -11,7 +11,7 @@ public interface UserAction {
 	 * the method returns a key.
 	 * @return - key.
 	*/
-	int key();
+	/*int key();*/
 	/**
 	 * the method exectutes a user's request.
 	*/

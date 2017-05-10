@@ -126,12 +126,12 @@ public class MenuTracker {
 	 * the method fills action array.
 	*/
 	void fillActions() {
-		this.action[position++] = new AddItem();
-		this.action[position++] = new ShowItems();
-		this.action[position++] = new EditItem();
-		this.action[position++] = new DeleteItem();
-		this.action[position++] = new FindItemById();
-		this.action[position++] = new FindItemByName();
+		this.action[this.position] = new AddItem("Add item", this.position++);
+		this.action[this.position] = new ShowItems("Show all items", this.position++);
+		this.action[this.position] = new EditItem("Edit item", this.position++);
+		this.action[this.position] = new DeleteItem("Delete item", this.position++);
+		this.action[this.position] = new FindItemById("Find item by id", this.position++);
+		this.action[this.position] = new FindItemByName("Find item by name", this.position++);
 	}
 	/**
 	 * the method shows a menu.
@@ -154,13 +154,14 @@ public class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class AddItem implements UserAction {
+	private class AddItem extends BaseAction {
 		/**
-		 * the method returns a key.
-		 * @return - key.
+		 * constructor.
+		 * @param name - name.
+		 * @param key - key.
 		*/
-		public int key() {
-			return 0;
+		AddItem(String name, int key) {
+			super(name, key);
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -170,13 +171,6 @@ public class MenuTracker {
 			String description = MenuTracker.this.consoleInput.ask(MenuTracker.ConsoleOutput.ENTER_DESCRIPTION_MSG.getMessage());
 			MenuTracker.this.tracker.add(new Item(System.currentTimeMillis(), name, description));
 		}
-		/**
-		 * the method returns an action's description.
-		 * @return - description.
-		*/
-		public String info() {
-			return String.format("%s. %s", this.key(), "Add item");
-		}
 	}
 	/**
 	 * class ShowItems.
@@ -184,13 +178,14 @@ public class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class ShowItems implements UserAction {
+	private class ShowItems extends BaseAction {
 		/**
-		 * the method returns a key.
-		 * @return - key.
+		 * constructor.
+		 * @param name - name.
+		 * @param key - key.
 		*/
-		public int key() {
-			return 1;
+		ShowItems(String name, int key) {
+			super(name, key);
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -206,13 +201,6 @@ public class MenuTracker {
 				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 		}
-		/**
-		 * the method returns an action's description.
-		 * @return - description.
-		*/
-		public String info() {
-			return String.format("%s. %s", this.key(), "Show all items");
-		}
 	}
 	/**
 	 * class EditItem.
@@ -220,13 +208,14 @@ public class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class EditItem implements UserAction {
+	private class EditItem extends BaseAction {
 		/**
-		 * the method returns a key.
-		 * @return - key.
+		 * constructor.
+		 * @param name - name.
+		 * @param key - key.
 		*/
-		public int key() {
-			return 2;
+		EditItem(String name, int key) {
+			super(name, key);
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -246,13 +235,6 @@ public class MenuTracker {
 				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 		}
-		/**
-		 * the method returns an action's description.
-		 * @return - description.
-		*/
-		public String info() {
-			return String.format("%s. %s", this.key(), "Edit item");
-		}
 	}
 	/**
 	 * class DeleteItem.
@@ -260,13 +242,14 @@ public class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class DeleteItem implements UserAction {
+	private class DeleteItem extends BaseAction {
 		/**
-		 * the method returns a key.
-		 * @return - key.
+		 * constructor.
+		 * @param name - name.
+		 * @param key - key.
 		*/
-		public int key() {
-			return 3;
+		DeleteItem(String name, int key) {
+			super(name, key);
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -279,13 +262,6 @@ public class MenuTracker {
 				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
 		}
-		/**
-		 * the method returns an action's description.
-		 * @return - description.
-		*/
-		public String info() {
-			return String.format("%s. %s", this.key(), "Delete item");
-		}
 	}
 	/**
 	 * class FindItemById.
@@ -293,13 +269,14 @@ public class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017.
 	*/
-	private class FindItemById implements UserAction {
+	private class FindItemById extends BaseAction {
 		/**
-		 * the method returns a key.
-		 * @return - key.
+		 * constructor.
+		 * @param name - name.
+		 * @param key - key.
 		*/
-		public int key() {
-			return 4;
+		FindItemById(String name, int key) {
+			super(name, key);
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -313,14 +290,6 @@ public class MenuTracker {
 			} else {
 				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
-			//return item;
-		}
-		/**
-		 * the method returns an action's description.
-		 * @return - description.
-		*/
-		public String info() {
-			return String.format("%s. %s", this.key(), "Find item by id");
 		}
 	}
 	/**
@@ -329,13 +298,14 @@ public class MenuTracker {
 	 * @version 1.0.
 	 * @since 27.04.2017
 	*/
-	private class FindItemByName implements UserAction {
+	private class FindItemByName extends BaseAction {
 		/**
-		 * the method returns a key.
-		 * @return - key.
+		 * constructor.
+		 * @param name - name.
+		 * @param key - key.
 		*/
-		public int key() {
-			return 5;
+		FindItemByName(String name, int key) {
+			super(name, key);
 		}
 		/**
 		 * the method exectutes a user's request.
@@ -351,14 +321,6 @@ public class MenuTracker {
 			}  else {
 				System.out.println(MenuTracker.ConsoleOutput.NO_ITEMS_FOUND_MSG.getMessage());
 				}
-			//return items;
-		}
-		/**
-		 * the method returns an action's description.
-		 * @return - description.
-		*/
-		public String info() {
-			return String.format("%s. %s", this.key(), "Find item by name");
 		}
 	}
 }

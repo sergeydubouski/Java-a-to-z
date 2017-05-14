@@ -1,34 +1,55 @@
-package ru.job4j.tracker.start;
+package ru.job4j.chess;
 
 /**
- * interface BaseAction.
+ * class Cell.
  * @author Sergey Dubouski.
  * @version 1.0.
- * @since 07.05.2017.
+ * @since 14.05.2017.
 */
-public abstract class BaseAction implements UserAction {
+public class Cell {
 	/**
-	 * variable name contains a name of an action.
+	 * variable name contains a x position.
 	*/
-	private String name;
+	private int posX;
 	/**
-	 * variable key contains a number of an action.
+	 * variable name contains a y position.
 	*/
-	private int key;
+	private int posY;
 	/**
-	 * constructor.
-	 * @param name - name.
-	 * @param key - key.
+	 * consructor
+	 * @param posX - x position.
+	 * @param posY - y position.
 	*/
-	public BaseAction(String name, int key) {
-		this.name = name;
-		this.key = key;
+	public Cell(int posX, int posY) {
+		this.posX = posX;
+		this.posY = posY;
 	}
 	/**
-	 * the method returns info.
-	 * @return - info.
+	 * method returns the x position.
+	 * @return - x position.
 	*/
-	public String info() {
-		return String.format("%s. %s", this.key, this.name);
+	public int getPosX() {
+		return this.posX;	
+	}
+	/**
+	 * method returns the y position.
+	 * @return - y position.
+	*/
+	public int getPosY() {
+		return this.posY;
+	}
+	/**
+	 * method sets the x position.
+	 * @param posX - x position.	 
+	*/
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+	/**
+	 * method sets the y position.
+	 * @param posY - y position.
+	*/
+	public void setPosX(int posY) {
+		this.posY = posY;
 	}
 }

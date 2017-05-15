@@ -24,4 +24,13 @@ abstract class Figure {
 	 * @return - array of cell of the path way.
 	*/
 	public abstract Cell[] way(Cell dest);
+	/**
+	 * method clones the object.
+	 * @param cell - a new cell.
+	 * @return - a figure object.
+	*/
+	public Figure clone(Cell cell) {
+		this.cell = cell;
+		return this;
+	}
 }

@@ -10,11 +10,11 @@ package ru.job4j.chess;
 	/**
 	 * variable contains a maximum size of the board's game field.
 	*/
-	public static final MAX_SIZE = 8;
+	public static final int MAX_SIZE = 8;
 	/**
 	 * variable contains all figures on the board in the game.
 	*/
-	Figure[][] figures = new Figure[MAX_SIZE][MAX_SIZE];
+	Figure[][] figures = new Figure[Board.MAX_SIZE][Board.MAX_SIZE];
 	/**
 	 * method adds a figure to the figures arrays.
 	 * @param figure - new figure to the game.
@@ -35,12 +35,12 @@ package ru.job4j.chess;
 	 * @param posY - figure's y position.
 	 * @return - deleted figure's object.
 	*/
-	public Figure deleteFigure(int posX, int PosY) {
-		if (this.figure[posX][posY] == null) {
+	public Figure deleteFigure(Cell cell) {
+		if (this.figure[cel.posX][cell.posY] == null) {
 			throw new FigureNotFoundException("CELL IS ALREADY EMPTY");
 		}
-		Figure deletedFigure = this.figures[posX][posY];
-		this.figures[posX][posY] = null;
+		Figure deletedFigure = this.figures[cell.posX][cell.posY];
+		this.figures[cell.posX][cell.posY] = null;
 		return deletedFigure;
 	}
 	/**
@@ -54,13 +54,13 @@ package ru.job4j.chess;
 			throw new FigureNotFoundException("CELL IS EMPTY");
 		}
 		Cell[] pathCells = this.figures[source.getPosX][source.getPosY].way(dest);
-		for (cell : pathCells) {
+		for (Cell cell : pathCells) {
 			if (this.figures[cell.getPosX][cell.getPosY] != null) {
 				throw new OccupiedWayException("PATH WAY IS BLOCKED");
 			}
 		}
 		this.figures[dest.getPosX][dest.getPosY] = this.figures[source.getPosX][source.getPosY].clone(dest);
-		this.deleteFigure([source.getPosX][source.getPosY]);
+		this.deleteFigure(source.getPosX, source.getPosY);
 		return true;
 	}
 }

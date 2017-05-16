@@ -16,7 +16,7 @@ public class Cell {
 	*/
 	private int posY;
 	/**
-	 * consructor
+	 * consructor.
 	 * @param posX - x position.
 	 * @param posY - y position.
 	*/
@@ -29,7 +29,7 @@ public class Cell {
 	 * @return - x position.
 	*/
 	public int getPosX() {
-		return this.posX;	
+		return this.posX;
 	}
 	/**
 	 * method returns the y position.
@@ -40,7 +40,7 @@ public class Cell {
 	}
 	/**
 	 * method sets the x position.
-	 * @param posX - x position.	 
+	 * @param posX - x position.
 	*/
 	public void setPosX(int posX) {
 		this.posX = posX;
@@ -49,7 +49,7 @@ public class Cell {
 	 * method sets the y position.
 	 * @param posY - y position.
 	*/
-	public void setPosX(int posY) {
+	public void setPosY(int posY) {
 		this.posY = posY;
 	}
 }

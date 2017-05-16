@@ -12,55 +12,59 @@ package ru.job4j.chess;
 	*/
 	public static final int MAX_SIZE = 8;
 	/**
-	 * variable contains all figures on the board in the game.
+	 * variable contains all figures on the board with respect to its cell.
 	*/
-	Figure[][] figures = new Figure[Board.MAX_SIZE][Board.MAX_SIZE];
+	private final Figure[][] figures = new Figure[Board.MAX_SIZE][Board.MAX_SIZE];
 	/**
 	 * method adds a figure to the figures arrays.
+	 * @param posX - x position of the cell.
+	 * @param posY - y position of the cell.
 	 * @param figure - new figure to the game.
-	 * @param posX - figure's x position.
-	 * @param posY - figure's y position.
-	 * @return Figure - added figure's object.
+	 * @return - added figure's object.
+	 * @throws OccupiedCellException - throws runtimeException exception.
 	*/
-	public Figure addFigure(Figure figure, int posX, int PosY) {
-		if (this.figure[posX][posY] != null) {
+	private Figure addFigure(int posX, int posY, Figure figure) throws OccupiedCellException {
+		if (this.figures[posX][posY] != null) {
 			throw new OccupiedCellException("CELL IS ALREADY OCCUPIED");
 		}
-		this.figures[posX][posY] = figure;
-		return this.figures[posX][posY];
+	this.figures[posX][posY] = figure;
+		return figure;
 	}
 	/**
 	 * method deletes a figure from the figures arrays.
-	 * @param posX - figure's x position.
-	 * @param posY - figure's y position.
+	 * @param cell - the figures location.
 	 * @return - deleted figure's object.
+	 * @throws FigureNotFoundException - throws runtimeException exception.
 	*/
-	public Figure deleteFigure(Cell cell) {
-		if (this.figure[cel.posX][cell.posY] == null) {
+	private Figure deleteFigure(Cell cell) throws FigureNotFoundException {
+		if (this.figures[cell.getPosX()][cell.getPosY()] == null) {
 			throw new FigureNotFoundException("CELL IS ALREADY EMPTY");
 		}
-		Figure deletedFigure = this.figures[cell.posX][cell.posY];
-		this.figures[cell.posX][cell.posY] = null;
+		Figure deletedFigure = this.figures[cell.getPosX()][cell.getPosY()];
+		this.figures[cell.getPosX()][cell.getPosY()] = null;
 		return deletedFigure;
 	}
 	/**
-	 * method moves a figure.	
+	 * method moves a figure.
 	 * @param source - source cell.
 	 * @param dest - destination cell.
 	 * @return - boolean.
+	 * @throws FigureNotFoundException - throws runtimeException exception.
+	 * @throws OccupiedWayException - throws runtimeException exception.
+	 * @throws ImpossibleMoveException - throws runtimeException exception.
 	*/
-	public boolean move(Cell source, Cell dest) {
-		if (this.figures[source.getPosX][source.getPosY] == null) {
+	public boolean move(Cell source, Cell dest) throws FigureNotFoundException, OccupiedWayException, ImpossibleMoveException {
+		if (this.figures[source.getPosX()][source.getPosY()] == null) {
 			throw new FigureNotFoundException("CELL IS EMPTY");
 		}
-		Cell[] pathCells = this.figures[source.getPosX][source.getPosY].way(dest);
+		Cell[] pathCells = this.figures[source.getPosX()][source.getPosY()].way(dest);
 		for (Cell cell : pathCells) {
-			if (this.figures[cell.getPosX][cell.getPosY] != null) {
-				throw new OccupiedWayException("PATH WAY IS BLOCKED");
+			if (this.figures[cell.getPosX()][cell.getPosY()] != null) {
+				throw new OccupiedWayException("CELL IS OCCUPIED");
 			}
 		}
-		this.figures[dest.getPosX][dest.getPosY] = this.figures[source.getPosX][source.getPosY].clone(dest);
-		this.deleteFigure(source.getPosX, source.getPosY);
+		this.figures[dest.getPosX()][dest.getPosY()] = this.figures[source.getPosX()][source.getPosY()].clone(dest);
+		this.deleteFigure(source);
 		return true;
 	}
 }

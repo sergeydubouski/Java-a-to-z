@@ -24,4 +24,10 @@ abstract class Figure {
 	 * @return - array of cell of the path way.
 	*/
 	public abstract Cell[] way(Cell dest);
+	/**
+	 * method clones the object.
+	 * @param dest - a destination cell.
+	 * @return - a Bishop object.
+	*/
+	public abstract Figure clone(Cell dest);
 }

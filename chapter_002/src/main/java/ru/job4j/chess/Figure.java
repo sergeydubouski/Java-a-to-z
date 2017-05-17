@@ -16,6 +16,7 @@ abstract class Figure {
 	 * @param cell - cell object.
 	*/
 	Figure(Cell cell) {
+		super();
 		this.cell = cell;
 	}
 	/**

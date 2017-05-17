@@ -21,6 +21,7 @@ public class Cell {
 	 * @param posY - y position.
 	*/
 	public Cell(int posX, int posY) {
+		super();
 		this.posX = posX;
 		this.posY = posY;
 	}

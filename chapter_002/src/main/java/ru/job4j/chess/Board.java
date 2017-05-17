@@ -6,7 +6,7 @@ package ru.job4j.chess;
  * @version 1.0.
  * @since 14.05.2017.
 */
- class Board {
+ public class Board {
 	/**
 	 * variable contains a maximum size of the board in x direction.
 	*/
@@ -18,7 +18,14 @@ package ru.job4j.chess;
 	/**
 	 * variable contains all figures on the board with respect to its cell.
 	*/
-	private final Figure[][] figures = new Figure[Board.X_MAX_SIZE][Board.Y_MAX_SIZE];
+	private final Figure[][] figures;
+	/**
+	 * constructor.
+	*/
+	public Board() {
+		super();
+		this.figures = new Figure[Board.X_MAX_SIZE][Board.Y_MAX_SIZE];
+	}
 	/**
 	 * method adds a figure to the figures arrays.
 	 * @param posX - x position of the cell.
@@ -27,7 +34,7 @@ package ru.job4j.chess;
 	 * @return - added figure's object.
 	 * @throws OccupiedCellException - throws runtimeException exception.
 	*/
-	private Figure addFigure(int posX, int posY, Figure figure) throws OccupiedCellException {
+	public Figure addFigure(int posX, int posY, Figure figure) throws OccupiedCellException {
 		if (this.figures[posX][posY] != null) {
 			throw new OccupiedCellException("CELL IS ALREADY OCCUPIED");
 		}

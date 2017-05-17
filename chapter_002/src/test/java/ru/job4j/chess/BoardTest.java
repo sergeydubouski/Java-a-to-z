@@ -1,11 +1,5 @@
-package ru.job4j.test;
+package ru.job4j.chess;
 
-import ru.job4j.chess.Cell;
-import ru.job4j.chess.Bishop;
-import ru.job4j.chess.Board;
-import ru.job4j.chess.FigureNotFoundException;
-import ru.job4j.chess.OccupiedWayException;
-import ru.job4j.chess.ImpossibleMoveException;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -31,6 +25,25 @@ public class BoardTest {
 		board.addFigure(sourcePosX, sourcePosY, new Bishop(new Cell(sourcePosX, sourcePosY)));
 		boolean result = board.move(new Cell(sourcePosX, sourcePosY), new Cell(destPosX, destPosY));
 		assertThat(result, is(true));
+	}
+	/**
+	 * Test.
+	*/
+	@Test
+	public void whenMoveFigureThenOccupiedCellException() {
+		Board board = new Board();
+		final int fig1PosX = 3;
+		final int fig1PosY = 1;
+		final int fig2PosX = 3;
+		final int fig2PosY = 1;
+		String result = " ";
+		board.addFigure(fig1PosX, fig1PosY, new Bishop(new Cell(fig1PosX, fig1PosY)));
+		try {
+			board.addFigure(fig2PosX, fig2PosY, new Bishop(new Cell(fig2PosX, fig2PosY)));
+		} catch (OccupiedCellException ocex) {
+			result = ocex.getMessage();
+		}
+		assertThat(result, is("CELL IS ALREADY OCCUPIED"));
 	}
 	/**
 	 * Test.

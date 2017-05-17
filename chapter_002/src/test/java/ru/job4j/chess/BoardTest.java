@@ -30,7 +30,7 @@ public class BoardTest {
 	 * Test.
 	*/
 	@Test
-	public void whenMoveFigureThenOccupiedCellException() {
+	public void whenAddFigureThenOccupiedCellException() {
 		Board board = new Board();
 		final int fig1PosX = 3;
 		final int fig1PosY = 1;

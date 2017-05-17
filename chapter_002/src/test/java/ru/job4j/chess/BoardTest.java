@@ -1,7 +1,6 @@
 package ru.job4j.test;
 
 import ru.job4j.chess.Cell;
-//import ru.job4j.chess.Figure;
 import ru.job4j.chess.Bishop;
 import ru.job4j.chess.Board;
 import ru.job4j.chess.FigureNotFoundException;

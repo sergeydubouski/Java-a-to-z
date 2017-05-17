@@ -8,13 +8,17 @@ package ru.job4j.chess;
 */
  class Board {
 	/**
-	 * variable contains a maximum size of the board's game field.
+	 * variable contains a maximum size of the board in x direction.
 	*/
-	public static final int MAX_SIZE = 8;
+	public static final int X_MAX_SIZE = 8;
+	/**
+	 * variable contains a maximum size of the board in y direction.
+	*/
+	public static final int Y_MAX_SIZE = 8;
 	/**
 	 * variable contains all figures on the board with respect to its cell.
 	*/
-	private final Figure[][] figures = new Figure[Board.MAX_SIZE][Board.MAX_SIZE];
+	private final Figure[][] figures = new Figure[Board.X_MAX_SIZE][Board.Y_MAX_SIZE];
 	/**
 	 * method adds a figure to the figures arrays.
 	 * @param posX - x position of the cell.

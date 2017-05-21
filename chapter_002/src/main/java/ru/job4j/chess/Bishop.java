@@ -22,7 +22,7 @@ public class Bishop extends Figure {
 	/**
 	 * method defines a figure's path way from the source to a destination cell.
 	 * @param dest - a destination cell.
-	 * @return - array of cell of the path way.
+	 * @return - array of cells of the path way.
 	 * @throws ImpossibleMoveException - throws runtimeException exception.
 	*/
 	public Cell[] way(Cell dest) throws ImpossibleMoveException {

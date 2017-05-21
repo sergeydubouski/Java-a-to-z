@@ -38,7 +38,7 @@ package ru.job4j.chess;
 		if (this.figures[posX][posY] != null) {
 			throw new OccupiedCellException("CELL IS ALREADY OCCUPIED");
 		}
-	this.figures[posX][posY] = figure;
+		this.figures[posX][posY] = figure;
 		return figure;
 	}
 	/**

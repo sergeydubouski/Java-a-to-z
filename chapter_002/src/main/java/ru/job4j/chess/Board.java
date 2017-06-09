@@ -27,6 +27,18 @@ package ru.job4j.chess;
 		this.figures = new Figure[Board.X_MAX_SIZE][Board.Y_MAX_SIZE];
 	}
 	/**
+	 * method checks if a cell is occupied.
+	 * @param cell - cell.
+	 * @return - return boolean whether cell is occupied or not.
+	*/
+	private boolean occupied(Cell cell) {
+		boolean isOccupied = true;
+		if (this.figures[cell.getPosX()][cell.getPosY()] == null) {
+			isOccupied == false;
+		}
+		return isOccupied;
+	}	
+	/**
 	 * method adds a figure to the figures arrays.
 	 * @param posX - x position of the cell.
 	 * @param posY - y position of the cell.
@@ -48,7 +60,7 @@ package ru.job4j.chess;
 	 * @throws FigureNotFoundException - throws runtimeException exception.
 	*/
 	private Figure deleteFigure(Cell cell) throws FigureNotFoundException {
-		if (this.figures[cell.getPosX()][cell.getPosY()] == null) {
+		if (!this.occupied(cell)) {
 			throw new FigureNotFoundException("CELL IS ALREADY EMPTY");
 		}
 		Figure deletedFigure = this.figures[cell.getPosX()][cell.getPosY()];
@@ -65,12 +77,12 @@ package ru.job4j.chess;
 	 * @throws ImpossibleMoveException - throws runtimeException exception.
 	*/
 	public boolean move(Cell source, Cell dest) throws FigureNotFoundException, OccupiedWayException, ImpossibleMoveException {
-		if (this.figures[source.getPosX()][source.getPosY()] == null) {
+		if (!this.occupied(cell)) {
 			throw new FigureNotFoundException("CELL IS EMPTY");
 		}
 		Cell[] pathCells = this.figures[source.getPosX()][source.getPosY()].way(dest);
 		for (Cell cell : pathCells) {
-			if (this.figures[cell.getPosX()][cell.getPosY()] != null) {
+			if (this.occupied(cell)) {
 				throw new OccupiedWayException("CELL IS OCCUPIED");
 			}
 		}

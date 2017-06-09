@@ -34,10 +34,10 @@ package ru.job4j.chess;
 	private boolean occupied(Cell cell) {
 		boolean isOccupied = true;
 		if (this.figures[cell.getPosX()][cell.getPosY()] == null) {
-			isOccupied == false;
+			isOccupied = false;
 		}
 		return isOccupied;
-	}	
+	}
 	/**
 	 * method adds a figure to the figures arrays.
 	 * @param posX - x position of the cell.
@@ -77,7 +77,7 @@ package ru.job4j.chess;
 	 * @throws ImpossibleMoveException - throws runtimeException exception.
 	*/
 	public boolean move(Cell source, Cell dest) throws FigureNotFoundException, OccupiedWayException, ImpossibleMoveException {
-		if (!this.occupied(cell)) {
+		if (!this.occupied(source)) {
 			throw new FigureNotFoundException("CELL IS EMPTY");
 		}
 		Cell[] pathCells = this.figures[source.getPosX()][source.getPosY()].way(dest);
